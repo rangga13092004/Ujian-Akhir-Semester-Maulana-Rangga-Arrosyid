@@ -1,0 +1,23 @@
+version: '3'
+services:
+  xampp:
+    build: .
+    image: xampp:latest
+    container_name: xampp
+    hostname: "xampp"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "3306:3306"
+    volumes:
+      - ./src:/opt/lampp/htdocs
+      - ./db/data:/opt/lampp/var/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      XDEBUG: "true" # Atur ini sesuai kebutuhan Anda
+      PHP_IDE_CONFIG: "serverName=localhost"
+      REMOTE_HOST: "localhost"
+      MYSQL_USER: rangga13092004
+      MYSQL_PASSWORD: admin123_couple
+      MYSQL_ROOT_PASSWORD: 4dm1n123_c0upl3
+      TZ: Asia/Jakarta
